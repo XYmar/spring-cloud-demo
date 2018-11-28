@@ -1,7 +1,8 @@
 # spring-cloud-demo
 spring-cloud-demo
 ## 工程说明
-- spring-cloud-config-server：Spring Cloud 中的统一配置中心服务器；
+- spring-cloud-config-server（8501端口）：Spring Cloud 中的统一配置中心服务器；
+- spring-cloud-user-service（5001端口）：用户服务提供者；
 
 ## spring-cloud-config-server
 1. 在配置文件中配置监听端口及应用名称；
@@ -23,4 +24,17 @@ spring-cloud-demo
     ```
     @EnableDiscoveryClient
     @EnableConfigServer
+    ```
+5. 按照{application}-{profile}.properties的格式保存配置文件,其中application部分对应于spring.application.name，profile对应于spring.cloud.config.profile；
+## spring-cloud-user-service
+1. 添加bootstrap.properties配置文件（其优先级高于application.properties），并删除原有的application.properties；
+    ```
+    spring.application.name=spring-cloud-user-service
+    #配置服务器链接配置
+    spring.cloud.config.uri=http://127.0.0.1:8501
+    #获取的配置文件版本，可通过lable和profile区分
+    spring.cloud.config.profile=dev
+    #链接配置服务器时使用的用户名及密码
+    spring.cloud.config.username=rengu
+    spring.cloud.config.password=rengu123456
     ```
