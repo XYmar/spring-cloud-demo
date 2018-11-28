@@ -38,3 +38,7 @@ spring-cloud-demo
     spring.cloud.config.username=rengu
     spring.cloud.config.password=rengu123456
     ```
+2. 在启动类上添加注解,启用服务注册及配置服务器功能；
+    ```
+    @EnableDiscoveryClient
+    ```
