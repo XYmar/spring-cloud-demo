@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-authorization-server/spring-cloud-authorization-server.iml" filepath="$PROJECT_DIR$/spring-cloud-authorization-server/spring-cloud-authorization-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-config-server/spring-cloud-config-server.iml" filepath="$PROJECT_DIR$/spring-cloud-config-server/spring-cloud-config-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-user-consumer/spring-cloud-user-consumer.iml" filepath="$PROJECT_DIR$/spring-cloud-user-consumer/spring-cloud-user-consumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-user-service/spring-cloud-user-service.iml" filepath="$PROJECT_DIR$/spring-cloud-user-service/spring-cloud-user-service.iml" />
