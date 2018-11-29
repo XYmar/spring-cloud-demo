@@ -9,10 +9,10 @@ spring-cloud-demo
 - MySQL关系型数据库
 
 ## 工程说明
-- spring-cloud-config-server（8501端口）：Spring Cloud 中的统一配置中心服务器；
+- spring-cloud-config-server（7000端口）：Spring Cloud 中的统一配置中心服务器；
 - spring-cloud-user-service（5001端口）：用户、角色相关服务提供者；
 - spring-cloud-user-consumer（6001端口）：用户、角色相关服务消费者
-- spring-cloud-authorization-server（8502端口）：授权服务器
+- spring-cloud-authorization-server（7001端口）：授权服务器
 
 ## spring-cloud-config-server
 1. 在配置文件中配置监听端口及应用名称；
