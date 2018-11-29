@@ -1,8 +1,10 @@
 # spring-cloud-demo
 spring-cloud-demo
+
 ## 工程说明
 - spring-cloud-config-server（8501端口）：Spring Cloud 中的统一配置中心服务器；
-- spring-cloud-user-service（5001端口）：用户相关服务提供者；
+- spring-cloud-user-service（5001端口）：用户、角色相关服务提供者；
+- spring-cloud-user-consumer（6001端口）：用户、角色相关服务消费者
 
 ## spring-cloud-config-server
 1. 在配置文件中配置监听端口及应用名称；
@@ -26,6 +28,7 @@ spring-cloud-demo
     @EnableConfigServer
     ```
 5. 按照{application}-{profile}.properties的格式保存配置文件,其中application部分对应于spring.application.name，profile对应于spring.cloud.config.profile；
+
 ## spring-cloud-user-service
 1. 添加bootstrap.properties配置文件（其优先级高于application.properties），并删除原有的application.properties；
     ```
@@ -41,4 +44,20 @@ spring-cloud-demo
 2. 在启动类上添加注解,启用服务注册及配置服务器功能；
     ```
     @EnableDiscoveryClient
-    ```         
+    ```  
+
+## spring-cloud-user-consumer 
+1. 基础配置同spring-cloud-user-service工程;
+2. 在启动类上添加注解开启Feign功能
+    ```
+    @EnableFeignClients
+    ```
+3. 在配置文件中添加断路器相关配置；
+    ```
+    #在Feign中启用hystrix断路器
+    feign.hystrix.enabled=true
+    ```
+3. 创建FeignClient接口，并在接口上添加注解，其中value参数为在服务注册中心上注册的服务Id，fallback为实现该接口的断路器处理方法
+    ```
+    @FeignClient(value = "spring-cloud-user-service", fallback = UserHystrix.class)
+    ```  
