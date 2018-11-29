@@ -1,10 +1,18 @@
 # spring-cloud-demo
 spring-cloud-demo
 
+## 疑问点
+- @Qualifier注解是什么作用？
+
+## 依赖的外部服务
+- Consul服务注册与发现服务器
+- MySQL关系型数据库
+
 ## 工程说明
 - spring-cloud-config-server（8501端口）：Spring Cloud 中的统一配置中心服务器；
 - spring-cloud-user-service（5001端口）：用户、角色相关服务提供者；
 - spring-cloud-user-consumer（6001端口）：用户、角色相关服务消费者
+- spring-cloud-authorization-server（8502端口）：授权服务器
 
 ## spring-cloud-config-server
 1. 在配置文件中配置监听端口及应用名称；
@@ -44,6 +52,10 @@ spring-cloud-demo
 2. 在启动类上添加注解,启用服务注册及配置服务器功能；
     ```
     @EnableDiscoveryClient
+    ```
+3. 读取配置文件中的内容可以通过在属性上添加@Value注解的方式
+    ```
+    @Value("${config.defaultAdminRoleName}")
     ```  
 
 ## spring-cloud-user-consumer 

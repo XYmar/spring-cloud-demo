@@ -28,5 +28,4 @@ public class UserEntity implements Serializable {
     private boolean enabled = true;
     @ManyToMany(fetch = FetchType.EAGER)
     private Set<RoleEntity> roleEntities;
-
 }
