@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-config-server/spring-cloud-config-server.iml" filepath="$PROJECT_DIR$/spring-cloud-config-server/spring-cloud-config-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-user-consumer/spring-cloud-user-consumer.iml" filepath="$PROJECT_DIR$/spring-cloud-user-consumer/spring-cloud-user-consumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-user-service/spring-cloud-user-service.iml" filepath="$PROJECT_DIR$/spring-cloud-user-service/spring-cloud-user-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-zuul-server/spring-cloud-zuul-server.iml" filepath="$PROJECT_DIR$/spring-cloud-zuul-server/spring-cloud-zuul-server.iml" />
     </modules>
   </component>
 </project>
