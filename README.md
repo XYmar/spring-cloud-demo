@@ -13,7 +13,8 @@ spring-cloud-demo
 - spring-cloud-user-service（5001端口）：用户、角色相关服务提供者；
 - spring-cloud-user-consumer（6001端口）：用户、角色相关服务消费者
 - spring-cloud-authorization-server（7001端口）：授权服务器
-- spring-cloud-api-gateway(端口8080)：微服务API网管服务器
+- spring-cloud-api-gateway(端口8080)：微服务API网管服务器-Spring Cloud Gateway版本
+- spring-cloud-zuul-server(端口8080)：微服务API网管服务器-Zuul版本
 
 ## spring-cloud-config-server
 1. 在配置文件中配置监听端口及应用名称；
@@ -73,4 +74,20 @@ spring-cloud-demo
 3. 创建FeignClient接口，并在接口上添加注解，其中value参数为在服务注册中心上注册的服务Id，fallback为实现该接口的断路器处理方法
     ```
     @FeignClient(value = "spring-cloud-user-service", fallback = UserHystrix.class)
-    ```  
+    ```
+
+## spring-cloud-zuul-server
+1. 修改配置文件，在配置文件中添加路由表；
+    ```
+    #配置路由服务-Oauth2认证服务
+    #path字段用来描述路径
+    zuul.routes.auth.path=/auth/**
+    #sensitiveHeaders用来添加转发请求的过滤器
+    zuul.routes.auth.sensitiveHeaders=
+    #service-id用描述转发的服务
+    zuul.routes.auth.service-id=spring-cloud-authorization-server
+    ```
+2. 在启动类上添加注解开启Zuul功能
+    ```
+    @EnableZuulProxy
+    ```
