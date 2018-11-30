@@ -13,6 +13,7 @@ spring-cloud-demo
 - spring-cloud-user-service（5001端口）：用户、角色相关服务提供者；
 - spring-cloud-user-consumer（6001端口）：用户、角色相关服务消费者
 - spring-cloud-authorization-server（7001端口）：授权服务器
+- spring-cloud-api-gateway(端口8080)：微服务API网管服务器
 
 ## spring-cloud-config-server
 1. 在配置文件中配置监听端口及应用名称；
