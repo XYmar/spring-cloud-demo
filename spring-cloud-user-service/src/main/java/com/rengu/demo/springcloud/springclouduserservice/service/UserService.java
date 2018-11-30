@@ -7,6 +7,7 @@ import com.rengu.demo.springcloud.springclouduserservice.repository.UserReposito
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -54,12 +55,21 @@ public class UserService {
         return userRepository.save(userEntity);
     }
 
+    // 根据Id查询用户信息
+    @Cacheable(value = "User_Cache", key = "#userId")
+    public UserEntity getUserById(String userId) {
+        if (!hasUserById(userId)) {
+            throw new RuntimeException(ApplicationMessage.USER_ID_NOT_FOUND + userId);
+        }
+        return userRepository.findById(userId).get();
+    }
+
     // 根据用户名查询用户
     public UserEntity getUserByUsername(String username) {
         if (!hasUserByUsername(username)) {
             throw new RuntimeException(ApplicationMessage.USER_USERNAME_NOT_FOUND + username);
         }
-        return userRepository.findAllByUsername(username);
+        return userRepository.findByUsername(username);
     }
 
     // 根据用户名查询用户是否存在
@@ -67,6 +77,14 @@ public class UserService {
         if (StringUtils.isEmpty(username)) {
             return false;
         }
-        return userRepository.existsAllByUsername(username);
+        return userRepository.existsByUsername(username);
+    }
+
+    // 根据Id判断用户是否存在
+    public boolean hasUserById(String userId) {
+        if (StringUtils.isEmpty(userId)) {
+            return false;
+        }
+        return userRepository.existsById(userId);
     }
 }

@@ -21,4 +21,9 @@ public class UserService {
     public UserEntity saveUser(UserEntity userEntity) {
         return userFeignClient.saveUser(userEntity);
     }
+
+    // 根据Id查询用户信息
+    public UserEntity getUserById(String userId) {
+        return userFeignClient.getUserById(userId);
+    }
 }

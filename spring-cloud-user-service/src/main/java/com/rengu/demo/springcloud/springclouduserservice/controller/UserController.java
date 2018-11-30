@@ -28,6 +28,12 @@ public class UserController {
         return userService.saveUser(userEntity, roleService.getRoleByName(defaultUserRoleName));
     }
 
+    // 根据Id查询用户
+    @GetMapping(value = "/{userId}")
+    public UserEntity getUserById(@PathVariable(value = "userId") String userId) {
+        return userService.getUserById(userId);
+    }
+
     @GetMapping(value = "/by-username")
     public UserEntity getUserByUsername(@RequestParam(value = "username") String username) {
         return userService.getUserByUsername(username);

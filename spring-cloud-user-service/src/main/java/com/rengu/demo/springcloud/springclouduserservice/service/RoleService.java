@@ -38,7 +38,7 @@ public class RoleService {
         if (StringUtils.isEmpty(name)) {
             return false;
         }
-        return roleRepository.existsAllByName(name);
+        return roleRepository.existsByName(name);
     }
 
     // 根据角色名称查询角色
@@ -47,6 +47,6 @@ public class RoleService {
         if (!hasRoleByName(name)) {
             throw new RuntimeException(ApplicationMessage.ROLE_NAME_NOT_FOUND + name);
         }
-        return roleRepository.findAllByName(name);
+        return roleRepository.findByName(name);
     }
 }

@@ -14,4 +14,7 @@ public class ApplicationMessage {
     public static final String USER_PASSWORD_ARGS_NOT_FOUND = "用户密码参数不存在或不合法。";
     public static final String USER_PASSWORD_NOT_FOUND = "未发现该用户密码：";
     public static final String USER_PASSWORD_EXISTED = "该用户密码已存在：";
+    public static final String USER_ID_ARGS_NOT_FOUND = "用户id参数不存在或不合法。";
+    public static final String USER_ID_NOT_FOUND = "未发现该用户id：";
+    public static final String USER_ID_EXISTED = "该用户id已存在：";
 }

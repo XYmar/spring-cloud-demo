@@ -5,9 +5,7 @@ import com.rengu.demo.springcloud.springclouduserconsumer.entity.ResultEntity;
 import com.rengu.demo.springcloud.springclouduserconsumer.entity.UserEntity;
 import com.rengu.demo.springcloud.springclouduserconsumer.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -24,5 +22,11 @@ public class UserController {
     @PostMapping
     public ResultEntity saveUser(UserEntity userEntity) {
         return ResultUtils.build(userService.saveUser(userEntity));
+    }
+
+    // 根据Id查询用户
+    @GetMapping(value = "/{userId}")
+    public ResultEntity getUserById(@PathVariable(value = "userId") String userId) {
+        return ResultUtils.build(userService.getUserById(userId));
     }
 }
